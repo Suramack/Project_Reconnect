@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reconnect/screens/login_screen.dart';
+import 'package:reconnect/test_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color(0xFFEFEFEF),
           appBarTheme: const AppBarTheme(
               backgroundColor: Color(0xff025dbf), centerTitle: true)),
-      home: const Login(),
+      home: const Sstack(),
     );
   }
 }

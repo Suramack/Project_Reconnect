@@ -111,63 +111,67 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Spacer(),
-            const TextField(
-              decoration: InputDecoration(
-                  hintText: 'Email Address',
-                  icon: Icon(
-                    FontAwesomeIcons.envelope,
-                    color: Color(0xff453e3d),
+            SizedBox(
+              width: 305,
+              height: 152,
+              child: Column(
+                children: [
+                  const Spacer(),
+                  const TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Email Address',
+                        icon: Icon(
+                          FontAwesomeIcons.envelope,
+                          color: Color(0xff453e3d),
+                        ),
+                        border: InputBorder.none),
                   ),
-                  border: InputBorder.none),
-            ),
-            const Spacer(),
-            Container(
-              width: 300,
-              height: 3,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(100),
-              ),
-            ),
-            const Spacer(),
-            const TextField(
-              decoration: InputDecoration(
-                  hintText: 'Password',
-                  icon: Icon(
-                    FontAwesomeIcons.lock,
-                    color: Color(0xff453e3d),
+                  const Spacer(),
+                  Container(
+                    width: 300,
+                    height: 3,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(100),
+                    ),
                   ),
-                  border: InputBorder.none),
-            ),
-            const Spacer(),
-            Container(
-              width: 150,
-              height: 50,
-              decoration: const BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 3,
-                    color: Colors.grey,
+                  const Spacer(),
+                  const TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Password',
+                        icon: Icon(
+                          FontAwesomeIcons.lock,
+                          color: Color(0xff453e3d),
+                        ),
+                        border: InputBorder.none),
                   ),
+                  const Spacer(),
                 ],
               ),
-              child: TextButton(
-                style: ButtonStyle(
-                  shadowColor: MaterialStateProperty.all<Color>(
-                    const Color(0xff0f1411),
+            ),
+            OutlinedButton(
+              style: ButtonStyle(
+                alignment: Alignment.bottomCenter,
+                shadowColor: MaterialStateProperty.all<Color>(Colors.grey),
+                side: MaterialStateProperty.all<BorderSide>(
+                    const BorderSide(color: Colors.green, width: 1.5)),
+                foregroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xff025dbf)),
+                fixedSize:
+                    MaterialStateProperty.all<Size>(const Size.fromWidth(150)),
+                minimumSize:
+                    MaterialStateProperty.all<Size>(const Size(175, 45)),
+                textStyle: MaterialStateProperty.all<TextStyle>(
+                  const TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'DMMono',
+                    letterSpacing: 1.1,
                   ),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(0xff223d29),
-                  ),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'LOGIN',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
-            )
+              onPressed: () {},
+              child: const Text('LOGIN'),
+            ),
           ],
         ),
       ),
@@ -182,6 +186,36 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          const Spacer(),
+          OutlinedButton(
+            style: ButtonStyle(
+              fixedSize: MaterialStateProperty.all<Size>(
+                const Size(95, 95),
+              ),
+            ),
+            onPressed: () {},
+            child: const Text('User'),
+          ),
+          const Spacer(),
+          const Text(
+            'Or',
+            style: TextStyle(color: Colors.grey),
+          ),
+          const Spacer(),
+          OutlinedButton(
+            style: ButtonStyle(
+              fixedSize: MaterialStateProperty.all<Size>(
+                const Size(95, 95),
+              ),
+            ),
+            onPressed: () {},
+            child: const Text('Worker'),
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }
