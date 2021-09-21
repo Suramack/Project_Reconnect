@@ -105,6 +105,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(blurRadius: 3, color: Colors.grey),
+        ],
       ),
       child: Container(
         padding: const EdgeInsets.all(25),
@@ -149,29 +152,45 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                 ],
               ),
             ),
-            OutlinedButton(
-              style: ButtonStyle(
-                alignment: Alignment.bottomCenter,
-                shadowColor: MaterialStateProperty.all<Color>(Colors.grey),
-                side: MaterialStateProperty.all<BorderSide>(
-                    const BorderSide(color: Colors.green, width: 1.5)),
-                foregroundColor:
-                    MaterialStateProperty.all<Color>(const Color(0xff025dbf)),
-                fixedSize:
-                    MaterialStateProperty.all<Size>(const Size.fromWidth(150)),
-                minimumSize:
-                    MaterialStateProperty.all<Size>(const Size(175, 45)),
-                textStyle: MaterialStateProperty.all<TextStyle>(
-                  const TextStyle(
-                    fontSize: 25,
-                    fontFamily: 'DMMono',
-                    letterSpacing: 1.1,
+            SizedBox(
+              width: 100,
+              height: 20,
+              child: Stack(
+                alignment: AlignmentDirectional.bottomCenter,
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: 30,
+                    child: OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        alignment: Alignment.bottomCenter,
+                        shadowColor:
+                            MaterialStateProperty.all<Color>(Colors.grey),
+                        side: MaterialStateProperty.all<BorderSide>(
+                            const BorderSide(color: Colors.green, width: 1.5)),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            const Color(0xff025dbf)),
+                        fixedSize: MaterialStateProperty.all<Size>(
+                            const Size.fromWidth(150)),
+                        minimumSize: MaterialStateProperty.all<Size>(
+                            const Size(175, 45)),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                          const TextStyle(
+                            fontSize: 25,
+                            fontFamily: 'DMMono',
+                            letterSpacing: 1.1,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Text('LOGIN'),
+                    ),
                   ),
-                ),
+                ],
               ),
-              onPressed: () {},
-              child: const Text('LOGIN'),
-            ),
+            )
           ],
         ),
       ),
