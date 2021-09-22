@@ -31,13 +31,13 @@ class _SstackState extends State<Sstack> with SingleTickerProviderStateMixin {
               Text('hi'),
             ],
           ),
-          Expanded(
-            child: TabBarView(controller: tabController, children: const [
-              Text('data'),
-              Text('data'),
-              Text('data'),
-            ]),
-          )
+          // Expanded(
+          //   child: TabBarView(controller: tabController, children: const [
+          //     Text('data'),
+          //     Text('data'),
+          //     Text('data'),
+          //   ]),
+          // )
         ],
       ),
     ));
