@@ -25,34 +25,25 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
     });
   }
 
-  bool _setActiveTabIndex() {
-    if (_tabController?.index == null) {
-      print('null');
-      return existingUser;
-    } else if (_tabController?.index == 1) {
-      print('1');
-
-      return !existingUser;
-    } else {
-      print('0');
-
-      return existingUser;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+          height: 100,
+        ),
         Container(
-          width: 325,
-          height: 75,
+          width: 340,
+          height: 70,
           decoration: BoxDecoration(
-              color: Colors.grey, borderRadius: BorderRadius.circular(100)),
+            color: Colors.grey.shade400,
+            borderRadius: BorderRadius.circular(100),
+          ),
           child: TabBar(
+            padding: const EdgeInsets.all(2),
             indicator: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: Colors.green,
+              borderRadius: BorderRadius.circular(100),
+              color: const Color(0xffffffff),
             ),
             controller: _tabController,
             tabs: [
@@ -66,8 +57,8 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: _tabController?.index == 0
-                          ? Colors.white
-                          : Colors.black),
+                          ? Colors.black
+                          : Colors.grey.shade100),
                 ),
               ),
               Container(
@@ -80,15 +71,15 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: _tabController?.index == 1
-                          ? Colors.white
-                          : Colors.black),
+                          ? Colors.black
+                          : Colors.grey.shade100),
                 ),
               ),
             ],
           ),
         ),
         Container(
-          width: 305,
+          width: 340,
           height: 350,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -109,16 +100,17 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
 
   Widget getExistingUserDetailsDesign() {
     return Stack(
-      alignment: Alignment.bottomCenter,
       children: [
         Container(
-          margin: const EdgeInsets.only(bottom: 15),
-          width: 305,
-          height: 290,
+          width: 350,
+          height: 250,
+          margin: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(blurRadius: 3, color: Colors.grey),
+              ]),
           child: Container(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -165,6 +157,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
           ),
         ),
         Positioned(
+          top: 235,
+          left: 87.5,
+//Outline button
           child: OutlinedButton(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -189,6 +184,21 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
             child: const Text('LOGIN'),
           ),
         ),
+        Positioned(
+          top: 300,
+          left: 100,
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              'Forgot Password?',
+              style: TextStyle(
+                color: Colors.grey.shade500,
+                fontSize: 17,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
@@ -196,23 +206,27 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
 //New user details design
   Widget getNewUserDetailsDesign() {
     return Container(
-      width: 305,
-      height: 250,
+      margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: const [
+            BoxShadow(blurRadius: 3, color: Colors.grey),
+          ]),
       child: Row(
         children: [
           const Spacer(),
           OutlinedButton(
             style: ButtonStyle(
-              fixedSize: MaterialStateProperty.all<Size>(
-                const Size(95, 95),
-              ),
+              fixedSize: MaterialStateProperty.all<Size>(const Size(95, 95)),
+              side: MaterialStateProperty.all(
+                  const BorderSide(color: Colors.green, width: 2)),
             ),
             onPressed: () {},
-            child: const Text('User'),
+            child: const Text(
+              'User',
+              style: TextStyle(color: Colors.green, fontSize: 18),
+            ),
           ),
           const Spacer(),
           const Text(
@@ -225,9 +239,22 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
               fixedSize: MaterialStateProperty.all<Size>(
                 const Size(95, 95),
               ),
+              side: MaterialStateProperty.all(
+                  const BorderSide(color: Colors.green, width: 2)),
             ),
-            onPressed: () {},
-            child: const Text('Worker'),
+            onPressed: () {
+              showBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: 200,
+                    );
+                  });
+            },
+            child: const Text(
+              'Worker',
+              style: TextStyle(color: Colors.green, fontSize: 18),
+            ),
           ),
           const Spacer(),
         ],

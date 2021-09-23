@@ -1,15 +1,15 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Sstack extends StatefulWidget {
-  const Sstack({Key? key}) : super(key: key);
+class TestWidget extends StatefulWidget {
+  const TestWidget({Key? key}) : super(key: key);
 
   @override
-  _SstackState createState() => _SstackState();
+  _TestWidgetState createState() => _TestWidgetState();
 }
 
-class _SstackState extends State<Sstack> with SingleTickerProviderStateMixin {
+class _TestWidgetState extends State<TestWidget>
+    with SingleTickerProviderStateMixin {
   TabController? tabController;
   @override
   void initState() {
