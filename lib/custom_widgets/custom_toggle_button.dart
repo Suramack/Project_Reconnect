@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:reconnect/methods/default_variables.dart';
+import 'package:reconnect/custom_widgets/custom_model_bottom_sheet.dart'
+    as bottom_sheet;
 
-class CustomToggleButton extends StatefulWidget {
-  const CustomToggleButton({Key? key}) : super(key: key);
+class CustomTabBar extends StatefulWidget {
+  const CustomTabBar({Key? key}) : super(key: key);
 
   @override
-  _CustomToggleButtonState createState() => _CustomToggleButtonState();
+  _CustomTabBarState createState() => _CustomTabBarState();
 }
 
-class _CustomToggleButtonState extends State<CustomToggleButton>
+class _CustomTabBarState extends State<CustomTabBar>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
@@ -141,6 +142,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                       ),
                       const Spacer(),
                       const TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                             hintText: 'Password',
                             icon: Icon(
@@ -222,7 +224,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
               side: MaterialStateProperty.all(
                   const BorderSide(color: Colors.green, width: 2)),
             ),
-            onPressed: () {},
+            onPressed: () {
+              bottom_sheet.bottomSheet(context);
+            },
             child: const Text(
               'User',
               style: TextStyle(color: Colors.green, fontSize: 18),
@@ -242,15 +246,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
               side: MaterialStateProperty.all(
                   const BorderSide(color: Colors.green, width: 2)),
             ),
-            onPressed: () {
-              showBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Container(
-                      height: 200,
-                    );
-                  });
-            },
+            onPressed: () {},
             child: const Text(
               'Worker',
               style: TextStyle(color: Colors.green, fontSize: 18),

@@ -78,6 +78,9 @@ flutter:
     - family: DMMono
       fonts:
         - asset: fonts/DMMono/DMMono-Medium.ttf
+    - family: Barlow
+      fonts:
+        - asset: fonts/Barlow/Barlow-Medium.ttf
 
   #   - family: Schyler
   #     fonts:

@@ -11,23 +11,24 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: const Text(
-          'Login',
+    return Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: const Text(
+            'Login',
+          ),
         ),
-      ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              CustomToggleButton(),
-            ],
-          )
-        ],
+        body: SingleChildScrollView(
+            child: Center(
+          child: Padding(
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.4),
+            child: CustomTabBar(),
+          ),
+        )),
       ),
     );
   }
