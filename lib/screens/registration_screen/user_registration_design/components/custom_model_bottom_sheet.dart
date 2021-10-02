@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reconnect/client_data/user_registration_design.dart';
+import 'package:reconnect/screens/registration_screen/user_registration_design/components/user_registration_design_form.dart';
 
 bottomSheet(context) {
   return showModalBottomSheet(

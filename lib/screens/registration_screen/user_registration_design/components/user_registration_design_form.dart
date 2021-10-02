@@ -115,16 +115,17 @@ class _UserRegistrationState extends State<UserRegistration> {
             ),
           ),
           ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.green)),
-              onPressed: () {},
-              child: const Text(
-                'SIGN UP',
-                style: TextStyle(
-                  fontFamily: 'DMMono',
-                ),
-              ))
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.green)),
+            onPressed: () {},
+            child: const Text(
+              'SIGN UP',
+              style: TextStyle(
+                fontFamily: 'DMMono',
+              ),
+            ),
+          ),
         ],
       ),
     );

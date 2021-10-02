@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reconnect/custom_widgets/custom_toggle_button.dart';
+import 'package:reconnect/screens/login_screen/components/custom_toggle_button.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -16,11 +16,6 @@ class _LoginState extends State<Login> {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: const Text(
-            'Login',
-          ),
-        ),
         body: SingleChildScrollView(
             child: Center(
           child: Padding(
