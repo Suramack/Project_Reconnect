@@ -22,7 +22,7 @@ class _UserRegistrationState extends State<UserRegistration> {
           BoxShadow(color: Colors.grey, blurRadius: 2),
         ],
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        color: Colors.black,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

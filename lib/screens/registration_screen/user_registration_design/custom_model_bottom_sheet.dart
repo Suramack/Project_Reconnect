@@ -13,7 +13,7 @@ bottomSheet(context) {
         return Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
             child: Column(
               children: const [

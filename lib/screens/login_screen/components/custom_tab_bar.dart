@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reconnect/screens/login_screen/components/get_existing_user_details_design.dart';
-import 'package:reconnect/screens/registration_screen/user_registration_design/get_new_user_details_design.dart';
+import 'package:reconnect/screens/registration_screen/user_type_design.dart';
 
 class CustomTabBar extends StatefulWidget {
   const CustomTabBar({Key? key}) : super(key: key);

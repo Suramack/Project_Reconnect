@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reconnect/screens/login_screen/components/custom_toggle_button.dart';
+import 'package:reconnect/screens/login_screen/components/custom_tab_bar.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
