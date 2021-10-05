@@ -16,8 +16,16 @@ bottomSheet(context) {
           child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
             child: Column(
-              children: const [
-                UserRegistration(),
+              children: [
+                Container(
+                  width: 50,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                ),
+                const UserRegistration(),
               ],
             ),
           ),

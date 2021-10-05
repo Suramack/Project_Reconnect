@@ -10,6 +10,11 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding:
@@ -21,7 +26,7 @@ class _LoginState extends State<Login> {
           child: Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.4),
-            child: CustomTabBar(),
+            child: const CustomTabBar(),
           ),
         )),
       ),

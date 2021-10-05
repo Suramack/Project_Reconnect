@@ -14,7 +14,7 @@ class _UserRegistrationState extends State<UserRegistration> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 40),
-      padding: const EdgeInsets.all(7),
+      padding: const EdgeInsets.all(10),
       width: 350,
       height: MediaQuery.of(context).size.height * 0.41,
       decoration: BoxDecoration(
@@ -22,7 +22,7 @@ class _UserRegistrationState extends State<UserRegistration> {
           BoxShadow(color: Colors.grey, blurRadius: 2),
         ],
         borderRadius: BorderRadius.circular(10),
-        color: Colors.black,
+        color: Colors.white,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

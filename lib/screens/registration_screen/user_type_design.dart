@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reconnect/screens/registration_screen/user_registration_design/custom_model_bottom_sheet.dart';
-// as bottom_sheet;
+
 import 'package:reconnect/screens/registration_screen/worker_registration/custom_model_bottom_sheet.dart';
 
 class GetNewUserDetailsDesign extends StatelessWidget {
@@ -31,6 +31,7 @@ class GetNewUserDetailsDesign extends StatelessWidget {
                   const BorderSide(color: Colors.green, width: 2)),
             ),
             onPressed: () {
+//User button
               bottomSheet(context);
             },
             child: const Text(
@@ -53,6 +54,7 @@ class GetNewUserDetailsDesign extends StatelessWidget {
                   const BorderSide(color: Colors.green, width: 2)),
             ),
             onPressed: () {
+//Worker button
               bottomsheet(context);
             },
             child: const Text(
