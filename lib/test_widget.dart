@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class TestWidget extends StatefulWidget {
@@ -9,89 +10,71 @@ class TestWidget extends StatefulWidget {
 }
 
 class _TestWidgetState extends State<TestWidget> {
+  List<CheckBoxList> checkBoxList = CheckBoxList.getCheckBoxList;
+
+  void checkedStatus(bool value, int index) {
+    setState(() {
+      checkBoxList[index].isChecked = value;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 400,
-            ),
-            ElevatedButton(
-              onPressed: () =>
-//The showModelBottomSheet Will push a sheet to our page for show widgets and actions
-                  showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent,
-                builder: (context) =>
-                    //The DraggableScrollableSeet will drag top to bottom or vise versa with respect to user interaction.
-                    DraggableScrollableSheet(
-                  initialChildSize: .6,
-                  maxChildSize: .9,
-                  minChildSize: .2,
-                  builder: (context, controller) =>
-                      //The customsheet method will return a widget with a child CustoomScrollView to Drag our DraggableScrollableSheet.
-                      customSheet(context, controller),
-                ),
-              ),
-              child: const Text('clickme'),
-            ),
-          ],
-        ),
-      ),
-    );
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.white,
+        body: GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 2,
+            crossAxisCount: 2,
+          ),
+          itemCount: checkBoxList.length,
+          itemBuilder: (context, index) => CheckboxListTile(
+            contentPadding: EdgeInsets.all(1),
+            title: checkBoxList[index].title,
+            subtitle: checkBoxList[index].subTitle,
+            checkColor: Colors.green,
+            activeColor: Colors.transparent,
+            value: checkBoxList[index].isChecked,
+            onChanged: (value) => checkedStatus(value!, index),
+          ),
+        ));
   }
 }
 
-Widget customSheet(BuildContext context, ScrollController controller) {
-  return Container(
-    alignment: Alignment.bottomLeft,
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(30),
-        topRight: Radius.circular(30),
-      ),
+class CheckBoxList {
+  Text? title;
+  Text? subTitle;
+  bool? isChecked;
+  CheckBoxList({this.isChecked, this.subTitle, this.title});
+  static List<CheckBoxList> getCheckBoxList = [
+    CheckBoxList(
+      title: const Text('Mobile EV Charger'),
+      subTitle: const Text('If you have transportable EV charger?'),
+      isChecked: false,
     ),
-// While use the CustomScrollView have an SliverAppBar for set our bar to constant, ie, the appBar will not move while dragging
-    child: CustomScrollView(
-      controller: controller,
-      slivers: [
-        SliverAppBar(
-          shadowColor: Colors.grey.shade100,
-          elevation: 1,
-          pinned: true,
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          title: Container(
-              margin: const EdgeInsets.only(bottom: 45),
-              width: 60,
-              height: 4,
-              color: Colors.grey.shade300),
-          shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.grey.shade200),
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-            ),
-          ),
-        ),
-        SliverFillRemaining(
-          hasScrollBody: false,
-          child: Column(
-            children: [
-              for (int i = 0; i < 10; i++)
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.green[i * 100],
-                ),
-            ],
-          ),
-        )
-      ],
+    CheckBoxList(
+      title: const Text('Repair'),
+      subTitle: const Text('Are you providing a transportable EV repair?'),
+      isChecked: false,
     ),
-  );
+    CheckBoxList(
+      title: const Text('Battery Exchange'),
+      subTitle: const Text('Are you providing battery swap services?'),
+      isChecked: false,
+    ),
+    CheckBoxList(
+      title: const Text('Charging point'),
+      subTitle: const Text('Do you have a charging point?'),
+      isChecked: false,
+    )
+  ];
 }

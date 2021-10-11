@@ -82,6 +82,8 @@ flutter:
     - family: Barlow
       fonts:
         - asset: fonts/Barlow/Barlow-Medium.ttf
+        - asset: fonts/Barlow/Barlow-Thin.ttf
+    
 
   #   - family: Schyler
   #     fonts:

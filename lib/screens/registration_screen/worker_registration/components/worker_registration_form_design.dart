@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/registration_screen/worker_registration/components/worker_text_style.dart';
+import 'package:reconnect/test_widget.dart';
 
-class WorkerForm extends StatelessWidget {
+class WorkerForm extends StatefulWidget {
   const WorkerForm({
     Key? key,
     required this.size,
   }) : super(key: key);
 
   final Size size;
+
+  @override
+  State<WorkerForm> createState() => _WorkerFormState();
+}
+
+class _WorkerFormState extends State<WorkerForm> {
+  List<CheckBoxList> checkBoxList = CheckBoxList.getList;
+  void isCheck(bool value, int index) {
+    setState(() {
+      checkBoxList[index].isChecked = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +35,7 @@ class WorkerForm extends StatelessWidget {
           right: 15,
           top: 15,
         ),
-        height: size.height,
+        height: widget.size.height,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(13),
@@ -36,7 +49,7 @@ class WorkerForm extends StatelessWidget {
             decoration: InputDecoration(
               label: Text(
                 'Name',
-                style: workerTextStyle(),
+                style: workerlabelTextStyle(),
               ),
               labelStyle: TextStyle(color: Colors.grey.shade500),
               icon: const Icon(
@@ -47,21 +60,13 @@ class WorkerForm extends StatelessWidget {
               border: InputBorder.none,
             ),
           ),
-          Container(
-            width: 315,
-            height: 1,
-            margin: const EdgeInsets.only(top: 3, bottom: 3),
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(100),
-            ),
-          ),
+          line(),
           TextField(
             cursorColor: Colors.green,
             decoration: InputDecoration(
               label: Text(
                 'Email',
-                style: workerTextStyle(),
+                style: workerlabelTextStyle(),
               ),
               labelStyle: TextStyle(color: Colors.grey.shade500),
               icon: const Icon(
@@ -72,21 +77,13 @@ class WorkerForm extends StatelessWidget {
               border: InputBorder.none,
             ),
           ),
-          Container(
-            width: 315,
-            height: 1,
-            margin: const EdgeInsets.only(top: 3, bottom: 3),
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(100),
-            ),
-          ),
+          line(),
           TextField(
             cursorColor: Colors.green,
             decoration: InputDecoration(
               label: Text(
                 'Phone Number',
-                style: workerTextStyle(),
+                style: workerlabelTextStyle(),
               ),
               labelStyle: TextStyle(color: Colors.grey.shade500),
               icon: const Icon(
@@ -97,20 +94,13 @@ class WorkerForm extends StatelessWidget {
               border: InputBorder.none,
             ),
           ),
-          Container(
-            width: 315,
-            height: 1,
-            margin: const EdgeInsets.only(top: 3, bottom: 3),
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(100),
-            ),
-          ),
+          line(),
           Container(
             margin: const EdgeInsets.only(top: 10),
             height: 25,
             alignment: Alignment.bottomLeft,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(
                   FontAwesomeIcons.car,
@@ -120,14 +110,110 @@ class WorkerForm extends StatelessWidget {
                   width: 15,
                 ),
                 Text(
-                  'Services',
+                  'EV Services',
                   style: TextStyle(color: Colors.grey.shade500, fontSize: 16),
                 ),
               ],
             ),
           ),
+          //Services
+          Container(
+            height: widget.size.width * .53,
+            child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: checkBoxList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.7,
+                crossAxisSpacing: 2,
+              ),
+              itemBuilder: (BuildContext context, index) => CheckboxListTile(
+                controlAffinity: ListTileControlAffinity.leading,
+                contentPadding: const EdgeInsets.only(top: 15, right: 9),
+                checkColor: Colors.green,
+                activeColor: Colors.transparent,
+                title: checkBoxList[index].title,
+                subtitle: checkBoxList[index].subTitle,
+                value: checkBoxList[index].isChecked,
+                onChanged: (value) => isCheck(value!, index),
+              ),
+            ),
+          ),
+          line(),
         ]),
       ),
     );
   }
+
+//The Line Container for separation of feilds
+  Container line() {
+    return Container(
+      width: 315,
+      height: 1,
+      margin: const EdgeInsets.only(top: 3, bottom: 3),
+      decoration: BoxDecoration(
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(100),
+      ),
+    );
+  }
+}
+
+class CheckBoxList {
+  int? id;
+  Text? title;
+  Text? subTitle;
+  bool? isChecked;
+
+  CheckBoxList({this.title, this.subTitle, this.isChecked, this.id});
+  static List<CheckBoxList> getList = [
+    CheckBoxList(
+      id: 1,
+      title: Text(
+        'Mobile EV Charger',
+        style: workerServicesTitleStyle(),
+      ),
+      subTitle: Text(
+        'Do you have transportable EV charger?',
+        style: workerServicesSubTitleStyle(),
+      ),
+      isChecked: false,
+    ),
+    CheckBoxList(
+      id: 2,
+      title: Text(
+        'Repair',
+        style: workerServicesTitleStyle(),
+      ),
+      subTitle: Text(
+        'Are you providing a transportable EV repair?',
+        style: workerServicesSubTitleStyle(),
+      ),
+      isChecked: false,
+    ),
+    CheckBoxList(
+      id: 3,
+      title: Text(
+        'Battery Exchange',
+        style: workerServicesTitleStyle(),
+      ),
+      subTitle: Text(
+        'Are you providing battery swap services?',
+        style: workerServicesSubTitleStyle(),
+      ),
+      isChecked: false,
+    ),
+    CheckBoxList(
+      id: 4,
+      title: Text(
+        'Charging point',
+        style: workerServicesTitleStyle(),
+      ),
+      subTitle: Text(
+        'Do you have a charging point?',
+        style: workerServicesSubTitleStyle(),
+      ),
+      isChecked: false,
+    )
+  ];
 }

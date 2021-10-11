@@ -3,10 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/registration_screen/worker_registration/components/worker_registration_form_design.dart';
 
 CustomScrollView workerBottomSheetDesign(
-  ScrollController scrollControll,
-  BuildContext context,
-  Size size,
-) {
+    ScrollController scrollControll, BuildContext context, Size size) {
   return CustomScrollView(
     controller: scrollControll,
     slivers: [
