@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:reconnect/screens/registration_screen/worker_registration/components/worker_text_style.dart';
-import 'package:reconnect/test_widget.dart';
+import 'package:reconnect/screens/registration_screen/worker_registration/components/worker_text_and_style.dart';
 
 class WorkerForm extends StatefulWidget {
   const WorkerForm({
@@ -16,10 +15,25 @@ class WorkerForm extends StatefulWidget {
 }
 
 class _WorkerFormState extends State<WorkerForm> {
-  List<CheckBoxList> checkBoxList = CheckBoxList.getList;
+  bool isTermsAndCondition = false;
+  List<EvServiceCheckBoxList> checkBoxList = EvServiceCheckBoxList.getList;
+  List<OtherServiceCheckBoxList> otherServicesCheckBoxList =
+      OtherServiceCheckBoxList.getList;
   void isCheck(bool value, int index) {
     setState(() {
       checkBoxList[index].isChecked = value;
+    });
+  }
+
+  void isCheckOtherServices(bool value, int index) {
+    setState(() {
+      otherServicesCheckBoxList[index].isChecked = value;
+    });
+  }
+
+  void isTermsAndConditionStatus(bool value) {
+    setState(() {
+      isTermsAndCondition = value;
     });
   }
 
@@ -43,104 +57,231 @@ class _WorkerFormState extends State<WorkerForm> {
             BoxShadow(blurRadius: 2, color: Colors.grey),
           ],
         ),
-        child: Column(children: [
-          TextField(
-            cursorColor: Colors.green,
-            decoration: InputDecoration(
-              label: Text(
-                'Name',
-                style: workerlabelTextStyle(),
-              ),
-              labelStyle: TextStyle(color: Colors.grey.shade500),
-              icon: const Icon(
-                FontAwesomeIcons.user,
-                color: Color(0xff453e3d),
-                size: 22,
-              ),
-              border: InputBorder.none,
-            ),
+        child: workerFormField(),
+      ),
+    );
+  }
+
+  Column workerFormField() {
+    return Column(children: [
+      TextField(
+        cursorColor: Colors.green,
+        decoration: InputDecoration(
+          label: Text(
+            'Name',
+            style: workerlabelTextStyle(),
           ),
-          line(),
-          TextField(
-            cursorColor: Colors.green,
-            decoration: InputDecoration(
-              label: Text(
-                'Email',
-                style: workerlabelTextStyle(),
-              ),
-              labelStyle: TextStyle(color: Colors.grey.shade500),
-              icon: const Icon(
-                FontAwesomeIcons.envelope,
-                color: Color(0xff453e3d),
-                size: 22,
-              ),
-              border: InputBorder.none,
-            ),
+          labelStyle: TextStyle(color: Colors.grey.shade500),
+          icon: const Icon(
+            FontAwesomeIcons.user,
+            color: Color(0xff453e3d),
+            size: 22,
           ),
-          line(),
-          TextField(
-            cursorColor: Colors.green,
-            decoration: InputDecoration(
-              label: Text(
-                'Phone Number',
-                style: workerlabelTextStyle(),
-              ),
-              labelStyle: TextStyle(color: Colors.grey.shade500),
-              icon: const Icon(
-                FontAwesomeIcons.mobileAlt,
-                color: Color(0xff453e3d),
-                size: 22,
-              ),
-              border: InputBorder.none,
-            ),
+          border: InputBorder.none,
+        ),
+      ),
+      line(),
+      TextField(
+        cursorColor: Colors.green,
+        decoration: InputDecoration(
+          label: Text(
+            'Email',
+            style: workerlabelTextStyle(),
           ),
-          line(),
-          Container(
-            margin: const EdgeInsets.only(top: 10),
-            height: 25,
-            alignment: Alignment.bottomLeft,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  FontAwesomeIcons.car,
-                  color: Color(0xff453e3d),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                Text(
-                  'EV Services',
-                  style: TextStyle(color: Colors.grey.shade500, fontSize: 16),
-                ),
-              ],
-            ),
+          labelStyle: TextStyle(color: Colors.grey.shade500),
+          icon: const Icon(
+            FontAwesomeIcons.envelope,
+            color: Color(0xff453e3d),
+            size: 22,
           ),
-          //Services
-          Container(
-            height: widget.size.width * .53,
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: checkBoxList.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1.7,
-                crossAxisSpacing: 2,
-              ),
-              itemBuilder: (BuildContext context, index) => CheckboxListTile(
-                controlAffinity: ListTileControlAffinity.leading,
-                contentPadding: const EdgeInsets.only(top: 15, right: 9),
-                checkColor: Colors.green,
-                activeColor: Colors.transparent,
-                title: checkBoxList[index].title,
-                subtitle: checkBoxList[index].subTitle,
-                value: checkBoxList[index].isChecked,
-                onChanged: (value) => isCheck(value!, index),
-              ),
-            ),
+          border: InputBorder.none,
+        ),
+      ),
+      line(),
+      TextField(
+        cursorColor: Colors.green,
+        decoration: InputDecoration(
+          label: Text(
+            'Phone Number',
+            style: workerlabelTextStyle(),
           ),
-          line(),
-        ]),
+          labelStyle: TextStyle(color: Colors.grey.shade500),
+          icon: const Icon(
+            FontAwesomeIcons.mobileAlt,
+            color: Color(0xff453e3d),
+            size: 22,
+          ),
+          border: InputBorder.none,
+        ),
+      ),
+      line(),
+      evServicesTitle(),
+      evServicesList(),
+      line(),
+      otherServicesTitle(),
+      otherServicesList(),
+      line(),
+      uploadDocumentButtton(),
+      termsAndConditionCheckBox(),
+      workerRegistrationButton()
+    ]);
+  }
+
+  Container workerRegistrationButton() {
+    return Container(
+      width: 240,
+      padding: const EdgeInsets.only(top: 8),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all<double>(1),
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+        ),
+        onPressed: () => null,
+        child: workerSignInButtonText(),
+      ),
+    );
+  }
+
+  Container termsAndConditionCheckBox() {
+    return Container(
+      padding: const EdgeInsets.only(top: 8, left: 20, right: 20),
+      child: CheckboxListTile(
+          tileColor: Colors.green,
+          // dense: true,
+          controlAffinity: ListTileControlAffinity.leading,
+          activeColor: Colors.transparent,
+          checkColor: Colors.green,
+          title: termsAndConditionsTitle(),
+          subtitle: termsAndConditionsSubtitle(),
+          value: isTermsAndCondition,
+          onChanged: (value) => isTermsAndConditionStatus(value!)),
+    );
+  }
+
+  Container uploadDocumentButtton() {
+    return Container(
+      padding: const EdgeInsets.only(top: 8),
+      child: OutlinedButton(
+        style: ButtonStyle(
+          maximumSize: MaterialStateProperty.all<Size>(const Size(240, 100)),
+          side: MaterialStateProperty.all<BorderSide>(
+              const BorderSide(width: 1.5, color: Colors.green)),
+          foregroundColor: MaterialStateProperty.all<Color>(
+            const Color(0xff025dbf),
+          ),
+        ),
+        onPressed: () => null,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              FontAwesomeIcons.cloudUploadAlt,
+              size: 20,
+              color: Color(0xff453e3d),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            workerUploadDocumentButtonText(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container otherServicesList() {
+    return Container(
+      height: widget.size.height * .13,
+      child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: otherServicesCheckBoxList.length,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (BuildContext context, int index) => CheckboxListTile(
+          onChanged: (value) => isCheckOtherServices(value!, index),
+          value: otherServicesCheckBoxList[index].isChecked,
+          title: otherServicesCheckBoxList[index].title,
+          subtitle: otherServicesCheckBoxList[index].subtitle,
+          activeColor: Colors.transparent,
+          checkColor: Colors.green,
+          controlAffinity: ListTileControlAffinity.leading,
+          contentPadding: EdgeInsets.only(top: 15, right: 9),
+        ),
+      ),
+    );
+  }
+
+  Container otherServicesTitle() {
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
+      height: 25,
+      alignment: Alignment.bottomLeft,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            FontAwesomeIcons.car,
+            color: Color(0xff453e3d),
+          ),
+          const SizedBox(
+            width: 15,
+          ),
+          Text(
+            'Other Services',
+            style: TextStyle(color: Colors.grey.shade500, fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container evServicesTitle() {
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
+      height: 25,
+      alignment: Alignment.bottomLeft,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            FontAwesomeIcons.carBattery,
+            size: 22,
+            color: Color(0xff453e3d),
+          ),
+          const SizedBox(
+            width: 15,
+          ),
+          Text(
+            'EV Services',
+            style: TextStyle(color: Colors.grey.shade500, fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
+
+//EV Services
+  Container evServicesList() {
+    return Container(
+      height: widget.size.width * .53,
+      child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: checkBoxList.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.7,
+          crossAxisSpacing: 2,
+        ),
+        itemBuilder: (BuildContext context, index) => CheckboxListTile(
+          controlAffinity: ListTileControlAffinity.leading,
+          contentPadding: const EdgeInsets.only(top: 15, right: 9),
+          checkColor: Colors.green,
+          activeColor: Colors.transparent,
+          title: checkBoxList[index].title,
+          subtitle: checkBoxList[index].subTitle,
+          value: checkBoxList[index].isChecked,
+          onChanged: (value) => isCheck(value!, index),
+        ),
       ),
     );
   }
@@ -159,15 +300,17 @@ class _WorkerFormState extends State<WorkerForm> {
   }
 }
 
-class CheckBoxList {
-  int? id;
+//EvServiceCheckBoxList class
+class EvServiceCheckBoxList {
+  int id;
   Text? title;
   Text? subTitle;
   bool? isChecked;
 
-  CheckBoxList({this.title, this.subTitle, this.isChecked, this.id});
-  static List<CheckBoxList> getList = [
-    CheckBoxList(
+  EvServiceCheckBoxList(
+      {this.title, this.subTitle, this.isChecked, required this.id});
+  static List<EvServiceCheckBoxList> getList = [
+    EvServiceCheckBoxList(
       id: 1,
       title: Text(
         'Mobile EV Charger',
@@ -179,7 +322,7 @@ class CheckBoxList {
       ),
       isChecked: false,
     ),
-    CheckBoxList(
+    EvServiceCheckBoxList(
       id: 2,
       title: Text(
         'Repair',
@@ -191,7 +334,7 @@ class CheckBoxList {
       ),
       isChecked: false,
     ),
-    CheckBoxList(
+    EvServiceCheckBoxList(
       id: 3,
       title: Text(
         'Battery Exchange',
@@ -203,7 +346,7 @@ class CheckBoxList {
       ),
       isChecked: false,
     ),
-    CheckBoxList(
+    EvServiceCheckBoxList(
       id: 4,
       title: Text(
         'Charging point',
@@ -215,5 +358,39 @@ class CheckBoxList {
       ),
       isChecked: false,
     )
+  ];
+}
+
+//OtherServiceCheckBoxList class
+class OtherServiceCheckBoxList {
+  int? id;
+  Text? title;
+  Text? subtitle;
+  bool? isChecked;
+  OtherServiceCheckBoxList(
+      {this.title, this.subtitle, this.isChecked, this.id});
+  static List<OtherServiceCheckBoxList> getList = [
+    OtherServiceCheckBoxList(
+        id: 1,
+        title: Text(
+          'Medical Emergency',
+          style: workerServicesTitleStyle(),
+        ),
+        subtitle: Text(
+          'Are you providing a first aid box?',
+          style: workerServicesSubTitleStyle(),
+        ),
+        isChecked: false),
+    OtherServiceCheckBoxList(
+        id: 2,
+        title: Text(
+          'Repair',
+          style: workerServicesTitleStyle(),
+        ),
+        subtitle: Text(
+          'Are you a mechanic?',
+          style: workerServicesSubTitleStyle(),
+        ),
+        isChecked: false),
   ];
 }

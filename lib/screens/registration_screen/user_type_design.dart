@@ -36,7 +36,7 @@ class GetNewUserDetailsDesign extends StatelessWidget {
             },
             child: const Text(
               'User',
-              style: TextStyle(color: Colors.green, fontSize: 18),
+              style: TextStyle(color: Color(0xff025dbf), fontSize: 18),
             ),
           ),
           const Spacer(),
@@ -59,7 +59,7 @@ class GetNewUserDetailsDesign extends StatelessWidget {
             },
             child: const Text(
               'Worker',
-              style: TextStyle(color: Colors.green, fontSize: 18),
+              style: TextStyle(color: Color(0xff025dbf), fontSize: 18),
             ),
           ),
           const Spacer(),
