@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//Worker Text
+//Worker Text widget
 Text workerUploadDocumentButtonText() {
   return const Text(
     'Upload your document',

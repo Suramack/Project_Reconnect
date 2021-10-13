@@ -205,7 +205,7 @@ class _WorkerFormState extends State<WorkerForm> {
           activeColor: Colors.transparent,
           checkColor: Colors.green,
           controlAffinity: ListTileControlAffinity.leading,
-          contentPadding: EdgeInsets.only(top: 15, right: 9),
+          contentPadding: const EdgeInsets.only(top: 15, right: 9),
         ),
       ),
     );

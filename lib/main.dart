@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reconnect/screens/login_screen/login_screen.dart';
+import 'package:reconnect/screens/worker_screen/worker_status_screen.dart';
 import 'package:reconnect/test_widget.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
             backgroundColor: Color(0xff025dbf), centerTitle: true),
       ),
-      home: const Login(),
+      home: const WorkerStatusScreen(),
     );
   }
 }
