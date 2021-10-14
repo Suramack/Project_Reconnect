@@ -21,65 +21,89 @@ class _WorkerStatusScreenState extends State<WorkerStatusScreen> {
         elevation: 0,
         backgroundColor: Colors.white,
       ),
-      body: Card(
-        borderOnForeground: false,
-        color: Colors.white,
-        elevation: 0,
-        margin: const EdgeInsets.only(
-          left: 20,
-          right: 20,
-          top: 30,
-        ),
-        child: Container(
-          padding: const EdgeInsets.only(
-            left: 20,
-            top: 20,
-          ),
-          alignment: Alignment.topLeft,
-          height: size.height * .6,
-          width: size.width,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.grey,
-                  blurRadius: 1,
-                )
-              ]),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              requestStatustTile(),
-              Divider(
-                color: Colors.grey.shade400,
-                thickness: .3,
-                endIndent: 20,
+      body: Column(
+        children: [
+          Card(
+            borderOnForeground: false,
+            color: Colors.white,
+            elevation: 0,
+            margin: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 30,
+            ),
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: 20,
+                top: 20,
+                right: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              alignment: Alignment.topLeft,
+              height: size.height * .6,
+              width: size.width,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 1,
+                    )
+                  ]),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 33,
-                    height: 33,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(100),
-                        boxShadow: const [
-                          BoxShadow(color: Colors.grey, blurRadius: 1),
-                        ]),
-                    child: const Icon(
-                      FontAwesomeIcons.checkCircle,
-                      size: 30,
-                      color: Colors.green,
+                  requestStatustTile(),
+                  Divider(
+                    color: Colors.grey.shade400,
+                    thickness: .3,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  requestTiles(0),
+                  const Expanded(
+                    child: VerticalDivider(
+                      color: Colors.lightBlue,
+                      thickness: 1,
+                      width: 30,
                     ),
                   ),
-                  Text('request submitted')
+                  requestTiles(1),
+                  const Expanded(
+                    child: VerticalDivider(
+                      color: Colors.lightBlue,
+                      thickness: 1,
+                      width: 30,
+                    ),
+                  ),
+                  requestTiles(2),
+                  const Spacer(),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            onPressed: () => null,
+            child: backToHomeButtonTextStyle(),
+            style: ButtonStyle(
+              minimumSize: MaterialStateProperty.all<Size>(
+                Size(size.width * .9, 55),
+              ),
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+              elevation: MaterialStateProperty.all<double>(1),
+              shape: MaterialStateProperty.all<OutlinedBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              shadowColor: MaterialStateProperty.all<Color>(Colors.grey),
+            ),
+          )
+        ],
       ),
     );
   }
