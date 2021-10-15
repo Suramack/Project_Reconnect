@@ -27,7 +27,7 @@ Row requestStatustTile() {
     children: [
       Text(
         'request status',
-        style: requesStatusHeadingStyle(),
+        style: requestStatusHeadingStyle(),
       ),
       Container(
         alignment: Alignment.topRight,
@@ -36,7 +36,7 @@ Row requestStatustTile() {
           'last updated 2021:Dec:12:56PM',
           textAlign: TextAlign.end,
           maxLines: 2,
-          style: requesStatusSubHeadingStyle(),
+          style: requestStatusSubHeadingStyle(),
         ),
       )
     ],
@@ -68,11 +68,11 @@ Row requestTiles(int index) {
           children: [
             Text(
               tileTitle[index],
-              style: requesStatusTitleStyle(),
+              style: requestStatusTitleStyle(),
             ),
             Text(
               tileSubTitle[index],
-              style: requesStatusSubTitleStyle(),
+              style: requestStatusSubTitleStyle(),
               textAlign: TextAlign.end,
             ),
           ],
