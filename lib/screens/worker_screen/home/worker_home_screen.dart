@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:reconnect/screens/worker_screen/components/worker_home.dart';
+import 'package:reconnect/screens/worker_screen/home/worker_home.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_request_status_tile.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
+import 'package:reconnect/screens/worker_screen/home/worker_dashboard_screen.dart';
 
 class WorkerHomeScreen extends StatefulWidget {
   const WorkerHomeScreen({Key? key}) : super(key: key);
@@ -14,8 +15,8 @@ class WorkerHomeScreen extends StatefulWidget {
 class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
   int navigationIndex = 0;
   List<Widget> home = [
-    HomeWidget(),
-    Text('DashBoard'),
+    const HomeWidget(),
+    const DashBoard(),
     Text('User Profile'),
   ];
   void setNavigation(int index) {
@@ -35,7 +36,7 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
           children: [],
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Colors.grey,

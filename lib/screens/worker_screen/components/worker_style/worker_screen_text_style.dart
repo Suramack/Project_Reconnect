@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //Text Style
@@ -44,10 +45,40 @@ TextStyle clientHelpType() => TextStyle(
       fontFamily: 'Barlow',
       fontSize: 14,
     );
-TextStyle clientHelpButtonTextStyle() => TextStyle(
+TextStyle clientHelpButtonTextStyle() => const TextStyle(
       fontSize: 17,
     );
-
+TextStyle dashBoardOverviewTextStyle() => const TextStyle(
+      color: Colors.lightBlueAccent,
+      fontFamily: 'Barlow',
+      fontSize: 22,
+    );
+TextStyle overviewPercentageTextStyle() => const TextStyle(
+      color: Colors.green,
+      fontFamily: 'DMMono',
+      fontSize: 22,
+    );
+TextStyle dashboardTextStyle() => const TextStyle(
+      color: Colors.lightBlue,
+      fontSize: 24,
+      fontFamily: 'Barlow',
+    );
+TextStyle dashboardTileTextStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontFamily: 'Barlow',
+      fontSize: 18,
+    );
+TextStyle performanceTextStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontSize: 22,
+      fontFamily: 'Barlow',
+    );
+TextStyle performanceStatusTextStyle() => const TextStyle(
+      color: Colors.white,
+      fontSize: 24,
+      fontFamily: 'Barlow',
+      fontWeight: FontWeight.bold,
+    );
 //Text
 Text backToHomeButtonTextStyle() => const Text(
       'Back to home',
