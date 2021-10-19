@@ -4,6 +4,7 @@ import 'package:reconnect/screens/worker_screen/home/worker_home.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_request_status_tile.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
 import 'package:reconnect/screens/worker_screen/home/worker_dashboard_screen.dart';
+import 'package:reconnect/screens/worker_screen/home/worker_profile_screen.dart';
 
 class WorkerHomeScreen extends StatefulWidget {
   const WorkerHomeScreen({Key? key}) : super(key: key);
@@ -15,9 +16,9 @@ class WorkerHomeScreen extends StatefulWidget {
 class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
   int navigationIndex = 0;
   List<Widget> home = [
-    const HomeWidget(),
-    const DashBoard(),
-    Text('User Profile'),
+    const ProfileScreen(),
+    const HomeScreen(),
+    const DashBoardScreen(),
   ];
   void setNavigation(int index) {
     setState(() {
@@ -28,6 +29,7 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: Container(
         width: 200,
         height: 400,

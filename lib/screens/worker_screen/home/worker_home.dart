@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
 
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeWidgetState createState() => _HomeWidgetState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

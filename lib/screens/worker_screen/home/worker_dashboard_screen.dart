@@ -2,40 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
 
-class DashBoard extends StatefulWidget {
-  const DashBoard({Key? key}) : super(key: key);
+class DashBoardScreen extends StatefulWidget {
+  const DashBoardScreen({Key? key}) : super(key: key);
 
   @override
-  _DashBoardState createState() => _DashBoardState();
+  _DashBoardScreenState createState() => _DashBoardScreenState();
 }
 
-class _DashBoardState extends State<DashBoard> {
-  // List<DashBoardTile> tileData = DashBoardTile();
-  // List<DashBoardTile> getTile = [
-  //   DashBoardTile(
-  //       title: 'Total help request',
-  //       icon: const Icon(
-  //         FontAwesomeIcons.users,
-  //         color: Colors.grey,
-  //       ),
-  //       value: '103'),
-  //   DashBoardTile(
-  //       title: 'Accepted',
-  //       icon: const Icon(
-  //         FontAwesomeIcons.handsHelping,
-  //         color: Color(0xff453e3d),
-  //       ),
-  //       value: '74'),
-  //   DashBoardTile(
-  //     title: 'Rejected',
-  //     icon: const Icon(
-  //       FontAwesomeIcons.users,
-  //       color: Color(0xff453e3d),
-  //     ),
-  //     value: '29',
-  //   ),
-  // ];
-
+class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -68,7 +42,7 @@ class _DashBoardState extends State<DashBoard> {
                 ),
                 const Divider(),
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   width: size.width,
                   alignment: Alignment.topLeft,
                   child: Column(

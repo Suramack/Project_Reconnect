@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//Size
+const double workerEditProfileIconSize = 18;
+//Color
+final Color workerEditProfileIconColor = Colors.grey.shade500;
 //Text Style
 TextStyle requestStatusHeadingStyle() => TextStyle(
       fontFamily: 'Barlow',
@@ -79,6 +83,34 @@ TextStyle performanceStatusTextStyle() => const TextStyle(
       fontFamily: 'Barlow',
       fontWeight: FontWeight.bold,
     );
+TextStyle workerNameStyle() => TextStyle(
+      color: Colors.pink.shade300,
+      fontFamily: 'Barlow',
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+    );
+TextStyle workerProfileTileTextStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontSize: 20,
+      fontFamily: 'Barlow',
+    );
+TextStyle workerProfileTileSubTitleStyle() => TextStyle(
+      color: Colors.grey.shade300,
+      fontSize: 14,
+      fontFamily: 'Barlow',
+    );
+TextStyle profileBottomSheetAppBarTitleStyle() => TextStyle(
+      color: Colors.grey.shade500,
+      fontFamily: 'Barlow',
+      fontSize: 18,
+    );
+TextStyle workerEditProfileLabelStyle() => TextStyle(
+      color: Colors.grey.shade500,
+      fontFamily: 'Baelow',
+    );
+TextStyle workerEditProfileSaveButtonTextStyle() =>
+    TextStyle(color: Colors.white, fontFamily: 'DMMono', fontSize: 20);
+
 //Text
 Text backToHomeButtonTextStyle() => const Text(
       'Back to home',
