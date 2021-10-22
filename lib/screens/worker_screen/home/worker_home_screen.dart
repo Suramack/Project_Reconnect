@@ -3,8 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/worker_screen/home/worker_home.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_request_status_tile.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
-import 'package:reconnect/screens/worker_screen/home/worker_dashboard_screen.dart';
-import 'package:reconnect/screens/worker_screen/home/worker_profile_screen.dart';
+import 'package:reconnect/screens/worker_screen/dash_borad_screen/worker_dashboard_screen.dart';
+import 'package:reconnect/screens/worker_screen/account_screen/account_screen.dart';
 
 class WorkerHomeScreen extends StatefulWidget {
   const WorkerHomeScreen({Key? key}) : super(key: key);

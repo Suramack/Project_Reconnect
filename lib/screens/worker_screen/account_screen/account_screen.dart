@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:reconnect/screens/worker_screen/account_screen/payment_screen/payment_screen.dart';
+import 'package:reconnect/screens/worker_screen/account_screen/profileBotttomSheets/edit_profile_screen.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
-import 'package:reconnect/screens/worker_screen/home/profileBotttomSheets/profile_bottom_sheet.dart';
+// import 'package:reconnect/screens/worker_screen/home/profileBotttomSheets/profile_bottom_sheet.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -18,6 +20,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       switch (id) {
         case 1:
           profileBottomSheet(context, size);
+          break;
+        case 2:
+          payment(context, size);
           break;
         default:
       }
@@ -144,7 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ]),
             child: Padding(
-              padding: const EdgeInsets.only(left: 20, top: 50),
+              padding: const EdgeInsets.only(left: 20, top: 70),
               child: Column(
                 children: [
                   profileTile(

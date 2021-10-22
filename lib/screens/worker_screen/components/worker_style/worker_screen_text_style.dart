@@ -108,8 +108,20 @@ TextStyle workerEditProfileLabelStyle() => TextStyle(
       color: Colors.grey.shade500,
       fontFamily: 'Baelow',
     );
-TextStyle workerEditProfileSaveButtonTextStyle() =>
-    TextStyle(color: Colors.white, fontFamily: 'DMMono', fontSize: 20);
+TextStyle workerEditProfileSaveButtonTextStyle() => const TextStyle(
+      color: Colors.white,
+      fontFamily: 'DMMono',
+      fontSize: 20,
+    );
+TextStyle paymetAccountTextStyle() => TextStyle(
+      color: Colors.grey.shade500,
+      fontFamily: 'Barlow',
+      fontSize: 18,
+    );
+TextStyle addedAccountListTextStyle() =>
+    const TextStyle(color: Colors.black, fontSize: 18, fontFamily: 'Barlow');
+TextStyle upiAddButtonTextStyle() =>
+    TextStyle(fontSize: 17, fontFamily: 'DMMono');
 
 //Text
 Text backToHomeButtonTextStyle() => const Text(
