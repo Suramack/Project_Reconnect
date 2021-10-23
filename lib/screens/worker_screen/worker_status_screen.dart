@@ -20,6 +20,7 @@ class _WorkerStatusScreenState extends State<WorkerStatusScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        foregroundColor: Colors.grey.shade300,
       ),
       body: Column(
         children: [
@@ -87,7 +88,7 @@ class _WorkerStatusScreenState extends State<WorkerStatusScreen> {
             height: 20,
           ),
           ElevatedButton(
-            onPressed: () => null,
+            onPressed: () => Navigator.pop(context),
             child: backToHomeButtonTextStyle(),
             style: ButtonStyle(
               minimumSize: MaterialStateProperty.all<Size>(

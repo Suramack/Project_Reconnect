@@ -6,6 +6,7 @@ import 'package:reconnect/screens/worker_screen/components/worker_request_status
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
 import 'package:reconnect/screens/worker_screen/dash_borad_screen/worker_dashboard_screen.dart';
 import 'package:reconnect/screens/worker_screen/account_screen/account_screen.dart';
+import 'package:reconnect/screens/worker_screen/worker_status_screen.dart';
 
 class WorkerHomeScreen extends StatefulWidget {
   const WorkerHomeScreen({Key? key}) : super(key: key);
@@ -44,6 +45,19 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
         ),
         elevation: 0,
         backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+              onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WorkerStatusScreen()),
+                  ),
+              icon: Icon(
+                FontAwesomeIcons.infoCircle,
+                color: Colors.redAccent,
+                size: 18,
+              ))
+        ],
       ),
       body: Column(children: [
         home[navigationIndex],
