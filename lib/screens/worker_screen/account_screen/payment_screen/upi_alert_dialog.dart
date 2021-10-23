@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reconnect/screens/worker_screen/account_screen/payment_screen/payment_screen.dart';
+import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
 
 class UpiAlertDialog extends StatefulWidget {
   const UpiAlertDialog({
@@ -32,7 +33,7 @@ class _UpiAlertDialogState extends State<UpiAlertDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Enter UPI ID to validate'),
+      title: const Text('Enter UPI ID to validate'),
       content: TextField(
         controller: upiIdController,
         keyboardType: TextInputType.emailAddress,
@@ -40,14 +41,35 @@ class _UpiAlertDialogState extends State<UpiAlertDialog> {
             errorText: isValid ? null : 'please enter Valid UPI ID'),
       ),
       actions: [
-        ElevatedButton(
+        OutlinedButton(
+          style: ButtonStyle(
+            elevation: MaterialStateProperty.all(0.5),
+            foregroundColor: MaterialStateProperty.all(Colors.green),
+            backgroundColor: MaterialStateProperty.all(Colors.white),
+            minimumSize: MaterialStateProperty.all(const Size(150, 50)),
+            shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)))),
+          ),
           onPressed: () => Navigator.pop(context),
-          child: Text('Cancel'),
+          child: Text(
+            'Cancel',
+            style: upiAddButtonTextStyle(),
+          ),
         ),
         ElevatedButton(
+          style: ButtonStyle(
+            elevation: MaterialStateProperty.all(0.5),
+            backgroundColor: MaterialStateProperty.all(Colors.green),
+            minimumSize: MaterialStateProperty.all(const Size(150, 50)),
+            shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)))),
+          ),
           onPressed: () =>
               upiValidator(upiIdController) ? Navigator.pop(context) : null,
-          child: Text('Validate'),
+          child: Text(
+            'Validate',
+            style: upiAddButtonTextStyle(),
+          ),
         ),
       ],
     );

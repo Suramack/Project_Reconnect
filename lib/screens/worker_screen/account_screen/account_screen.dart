@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:reconnect/screens/worker_screen/account_screen/notification_screen/change_notification_screen.dart';
+import 'package:reconnect/screens/worker_screen/account_screen/profile_screen/edit_profile_screen.dart';
+// import 'package:reconnect/screens/worker_screen/notification_screen/change_notification_screen.dart';
+import 'package:reconnect/screens/worker_screen/account_screen/logout_screen/log_out_alert_dialog.dart';
 import 'package:reconnect/screens/worker_screen/account_screen/payment_screen/payment_screen.dart';
-import 'package:reconnect/screens/worker_screen/account_screen/profileBotttomSheets/edit_profile_screen.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
 // import 'package:reconnect/screens/worker_screen/home/profileBotttomSheets/profile_bottom_sheet.dart';
 
@@ -23,6 +26,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           break;
         case 2:
           payment(context, size);
+          break;
+        case 3:
+          notificationChange(context);
+          break;
+        case 4:
+          logOutDialog(context);
           break;
         default:
       }

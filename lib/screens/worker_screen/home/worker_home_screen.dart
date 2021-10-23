@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:reconnect/screens/worker_screen/home/drawer.dart';
 import 'package:reconnect/screens/worker_screen/home/worker_home.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_request_status_tile.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
@@ -16,9 +17,9 @@ class WorkerHomeScreen extends StatefulWidget {
 class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
   int navigationIndex = 0;
   List<Widget> home = [
-    const ProfileScreen(),
     const HomeScreen(),
     const DashBoardScreen(),
+    const ProfileScreen(),
   ];
   void setNavigation(int index) {
     setState(() {
@@ -28,16 +29,10 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: Container(
-        width: 200,
-        height: 400,
-        color: Colors.green,
-        child: Column(
-          children: [],
-        ),
-      ),
+      drawer: drawer(size),
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         iconTheme: const IconThemeData(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:reconnect/screens/worker_screen/account_screen/payment_screen/link_phone_number.dart';
 import 'package:reconnect/screens/worker_screen/account_screen/payment_screen/upi_alert_dialog.dart';
 import 'package:reconnect/screens/worker_screen/components/worker_style/worker_screen_text_style.dart';
 import 'package:reconnect/screens/worker_screen/home/worker_home_screen.dart';
@@ -147,7 +148,7 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                         style: ButtonStyle(
                                             fixedSize:
                                                 MaterialStateProperty.all<Size>(
-                                                    Size(100, 100)),
+                                                    const Size(100, 100)),
                                             shape: MaterialStateProperty.all<
                                                 RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
@@ -206,7 +207,7 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                         style: ButtonStyle(
                                           fixedSize:
                                               MaterialStateProperty.all<Size>(
-                                                  Size(100, 100)),
+                                                  const Size(100, 100)),
                                           shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
@@ -227,7 +228,8 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                                   Colors.transparent),
                                         ),
                                         onPressed: () =>
-                                            gpay(contex, 'Gpay number'),
+                                            linkAccountWithPhoneNumber(
+                                                contex, 'Gpay number'),
                                         child: Text(
                                           'Google pay',
                                           textAlign: TextAlign.center,
@@ -257,7 +259,7 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                         style: ButtonStyle(
                                           fixedSize:
                                               MaterialStateProperty.all<Size>(
-                                                  Size(100, 100)),
+                                                  const Size(100, 100)),
                                           shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
@@ -278,7 +280,8 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                                   Colors.transparent),
                                         ),
                                         onPressed: () =>
-                                            gpay(context, 'PhonePay number'),
+                                            linkAccountWithPhoneNumber(
+                                                context, 'PhonePay number'),
                                         child: Text(
                                           'Phone Pay',
                                           textAlign: TextAlign.center,
@@ -308,7 +311,7 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                         style: ButtonStyle(
                                           fixedSize:
                                               MaterialStateProperty.all<Size>(
-                                                  Size(100, 100)),
+                                                  const Size(100, 100)),
                                           shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
@@ -329,7 +332,8 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                                   Colors.transparent),
                                         ),
                                         onPressed: () =>
-                                            gpay(context, 'PayTM number'),
+                                            linkAccountWithPhoneNumber(
+                                                context, 'PayTM number'),
                                         child: Text(
                                           'PayTM',
                                           style: upiAddButtonTextStyle(),
@@ -347,8 +351,8 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                               //Remove account
                               child: OutlinedButton(
                                 style: ButtonStyle(
-                                  minimumSize:
-                                      MaterialStateProperty.all(Size(200, 50)),
+                                  minimumSize: MaterialStateProperty.all(
+                                      const Size(200, 50)),
                                   foregroundColor:
                                       MaterialStateProperty.all(Colors.green),
                                 ),
@@ -371,20 +375,52 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                     });
 
                                     showDialog(
+                                      barrierDismissible: false,
                                       context: context,
                                       builder: (BuildContext context) =>
                                           StatefulBuilder(
                                         builder: (context, setState) {
                                           return AlertDialog(
-                                              title:
-                                                  Text('remove from the list'),
+                                              title: const Text(
+                                                  'remove your account'),
                                               actions: [
                                                 ElevatedButton(
+                                                  style: ButtonStyle(
+                                                    elevation:
+                                                        MaterialStateProperty
+                                                            .all(0.5),
+                                                    backgroundColor:
+                                                        MaterialStateProperty
+                                                            .all(Colors.green),
+                                                    minimumSize:
+                                                        MaterialStateProperty
+                                                            .all(const Size(
+                                                                150, 50)),
+                                                    shape: MaterialStateProperty.all(
+                                                        const RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius.all(
+                                                                    Radius.circular(
+                                                                        10)))),
+                                                  ),
                                                   onPressed: () =>
                                                       Navigator.pop(context),
-                                                  child: Text('cancel'),
+                                                  child: Text(
+                                                    'cancel',
+                                                    style:
+                                                        upiAddButtonTextStyle(),
+                                                  ),
                                                 ),
-                                                ElevatedButton(
+                                                OutlinedButton(
+                                                  style: ButtonStyle(
+                                                      minimumSize:
+                                                          MaterialStateProperty
+                                                              .all(const Size(
+                                                                  150, 50)),
+                                                      foregroundColor:
+                                                          MaterialStateProperty
+                                                              .all(Colors
+                                                                  .green)),
                                                   onPressed: () {
                                                     setState(() {
                                                       for (int i = 0;
@@ -409,14 +445,30 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                                           );
                                                           Navigator.pop(
                                                               context);
+                                                        } else {
+                                                          Fluttertoast.showToast(
+                                                              msg:
+                                                                  'select your account',
+                                                              backgroundColor:
+                                                                  Colors.grey,
+                                                              fontSize: 18,
+                                                              gravity:
+                                                                  ToastGravity
+                                                                      .BOTTOM,
+                                                              textColor:
+                                                                  Colors.white,
+                                                              toastLength: Toast
+                                                                  .LENGTH_SHORT);
                                                         }
                                                       }
                                                     });
                                                   },
-                                                  child: Text('remove'),
+                                                  child: Text('remove',
+                                                      style:
+                                                          upiAddButtonTextStyle()),
                                                 ),
                                               ],
-                                              content: Container(
+                                              content: SizedBox(
                                                 height: 200,
                                                 width: 300,
                                                 child: ListView.builder(
@@ -425,7 +477,7 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
                                                         1,
                                                     itemBuilder:
                                                         (contex, index) {
-                                                      return Container(
+                                                      return SizedBox(
                                                         width: 200,
                                                         child: ToggleButtons(
                                                           onPressed: (value) {
@@ -470,59 +522,3 @@ Future payment(BuildContext context, Size size) => showModalBottomSheet(
         },
       ),
     );
-
-Future gpay(BuildContext context, String title) {
-  bool isValidPhoneNumber = true;
-  TextEditingController numberController = TextEditingController();
-  return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return StatefulBuilder(builder: (context, setState) {
-          return AlertDialog(
-            title: Text(title),
-            content: TextField(
-              controller: numberController,
-              keyboardType: TextInputType.number,
-              onChanged: (number) {
-                setState(() {
-                  isValidPhoneNumber = true;
-                });
-              },
-              decoration: InputDecoration(
-                errorText: isValidPhoneNumber
-                    ? null
-                    : 'Enter your valid phone number ',
-              ),
-            ),
-            actions: [
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('cancel'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (numberController.text.length == 10) {
-                    setState(() {
-                      if (!addedAccountsList.contains(numberController.text)) {
-                        isValidPhoneNumber = true;
-                        addedAccountsList.add(numberController.text);
-                        upiAddButtonClicked = false;
-                        Navigator.pop(context);
-                      } else {
-                        isValidPhoneNumber = false;
-                      }
-                    });
-                  } else {
-                    setState(() {
-                      isValidPhoneNumber = false;
-                    });
-                  }
-                },
-                child: Text('Validate'),
-              )
-            ],
-          );
-        });
-      });
-}

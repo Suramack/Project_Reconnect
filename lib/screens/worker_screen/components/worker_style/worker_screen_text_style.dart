@@ -118,11 +118,51 @@ TextStyle paymetAccountTextStyle() => TextStyle(
       fontFamily: 'Barlow',
       fontSize: 18,
     );
-TextStyle addedAccountListTextStyle() =>
-    const TextStyle(color: Colors.black, fontSize: 18, fontFamily: 'Barlow');
-TextStyle upiAddButtonTextStyle() =>
-    TextStyle(fontSize: 17, fontFamily: 'DMMono');
-
+TextStyle addedAccountListTextStyle() => const TextStyle(
+      color: Colors.black,
+      fontSize: 18,
+      fontFamily: 'Barlow',
+    );
+TextStyle upiAddButtonTextStyle() => const TextStyle(
+      fontSize: 17,
+      fontFamily: 'DMMono',
+    );
+TextStyle notificationTextStyle() => TextStyle(
+      color: Colors.grey.shade500,
+      fontFamily: 'Barlow',
+      fontSize: 18,
+    );
+TextStyle confirmTextStyle() => TextStyle(
+      color: Colors.grey.shade500,
+      fontFamily: 'Barlow',
+      fontSize: 22,
+    );
+TextStyle confirmWarningTextStyle() => TextStyle(
+      color: Colors.grey.shade500,
+      fontFamily: 'Barlow',
+      fontSize: 18,
+      fontStyle: FontStyle.italic,
+    );
+TextStyle logoutCancelButtonTextStyle() => const TextStyle(
+      fontSize: 17,
+      fontFamily: 'DMMono',
+      color: Colors.white,
+    );
+TextStyle logoutConfirmButtonTextStyle() => const TextStyle(
+      fontSize: 17,
+      fontFamily: 'DMMono',
+      color: Colors.green,
+    );
+TextStyle drawerReconnectTextStyle() => const TextStyle(
+      fontFamily: 'Barlow',
+      fontSize: 24,
+      color: Colors.green,
+    );
+TextStyle drawerServiceTextStyle() => TextStyle(
+      fontFamily: 'Barlow',
+      fontSize: 20,
+      color: Colors.grey.shade400,
+    );
 //Text
 Text backToHomeButtonTextStyle() => const Text(
       'Back to home',
