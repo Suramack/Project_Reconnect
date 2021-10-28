@@ -6,13 +6,38 @@ TextStyle appBarTitleStyle() => const TextStyle(
       fontSize: 22,
       letterSpacing: -0.5,
     );
-TextStyle evHelpTextStyle() => TextStyle(
+TextStyle buttonsTileHeadingTextSyle() => TextStyle(
       color: Colors.grey.shade400,
       fontFamily: 'barlow',
       fontSize: 14,
     );
-TextStyle evHelpButtontextStyle() => TextStyle(
+TextStyle buttontextStyle() => TextStyle(
+      color: Colors.grey.shade900,
+      fontFamily: 'Heebo',
+      fontSize: 15,
+    );
+TextStyle workersNameTextStyle() => TextStyle(
       color: Colors.grey.shade500,
-      fontFamily: 'DMMono',
+      fontFamily: 'Barlow',
+      fontSize: 20,
+    );
+TextStyle workersTypeTextStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontFamily: 'Barlow',
+      fontSize: 17,
+    );
+TextStyle workersKmTextStyle() => const TextStyle(
+      color: Colors.green,
+      fontFamily: 'Barlow',
+      fontSize: 18,
+    );
+TextStyle workersTimeTextStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontFamily: 'Barlow',
+      fontSize: 18,
+    );
+TextStyle workersButtonTextStyle() => const TextStyle(
+      color: Colors.white,
+      fontFamily: 'Heebo',
       fontSize: 18,
     );

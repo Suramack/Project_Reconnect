@@ -88,6 +88,9 @@ flutter:
     - family: NanumGothic
       fonts:
         - asset: fonts/NanumGothic/NanumGothic-Regular.ttf
+    - family: Heebo
+      fonts:
+        - asset: fonts/Heebo/Heebo-Regular.ttf
 
   #   - family: Schyler
   #     fonts:

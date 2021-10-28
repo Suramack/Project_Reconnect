@@ -38,6 +38,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
       ),
       body: home[bottomNaivationIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         currentIndex: bottomNaivationIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.home), label: ''),

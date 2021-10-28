@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/user_screen/components/text_style.dart';
+import 'package:reconnect/screens/user_screen/ev_charge/ev_charge_button.dart';
 
 class UserHome extends StatefulWidget {
   const UserHome({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _UserHomeState extends State<UserHome> {
           //EV help
           Container(
             width: size.width,
-            height: 160,
+            height: 130,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               border: Border.all(
@@ -36,36 +37,70 @@ class _UserHomeState extends State<UserHome> {
                 children: [
                   Text(
                     'EV help',
-                    style: evHelpTextStyle(),
+                    style: buttonsTileHeadingTextSyle(),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      TextButton(
-                        onPressed: () => null,
-                        child: Column(
-                          children: [
-                            Icon(FontAwesomeIcons.chargingStation),
-                            Text('near me'),
-                          ],
+                      SizedBox(
+                        width: 100,
+                        child: TextButton(
+                          onPressed: () => evChargeButton(context, size),
+                          child: Column(
+                            children: [
+                              Icon(
+                                FontAwesomeIcons.route,
+                                color: Colors.pink.shade300,
+                              ),
+                              Text(
+                                'EV charge',
+                                textAlign: TextAlign.center,
+                                style: buttontextStyle(),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () => null,
-                        child: Column(
-                          children: [
-                            Icon(FontAwesomeIcons.carBattery),
-                            Text('battery exchange'),
-                          ],
+                      SizedBox(
+                        width: 100,
+                        child: TextButton(
+                          style: ButtonStyle(),
+                          onPressed: () => null,
+                          child: Column(
+                            children: [
+                              Icon(
+                                FontAwesomeIcons.chargingStation,
+                                color: Colors.lightBlueAccent.shade400,
+                              ),
+                              Text(
+                                'near me',
+                                style: buttontextStyle(),
+                              ),
+                            ],
+                          ),
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        width: 100,
+                        child: TextButton(
+                          style: ButtonStyle(),
+                          onPressed: () => null,
+                          child: Column(
+                            children: [
+                              Icon(
+                                FontAwesomeIcons.carBattery,
+                                color: Colors.lightGreenAccent.shade700,
+                              ),
+                              Text(
+                                'exchange',
+                                style: buttontextStyle(),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                  OutlinedButton(
-                    onPressed: () => null,
-                    child: Text(
-                      "I don't know about the problem",
-                    ),
-                  )
                 ],
               ),
             ),
@@ -83,6 +118,58 @@ class _UserHomeState extends State<UserHome> {
                   width: 0.5,
                 ),
               ),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Vehicle Help',
+                      style: buttonsTileHeadingTextSyle(),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          child: TextButton(
+                            onPressed: () => null,
+                            child: Column(
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.route,
+                                  color: Colors.amberAccent.shade700,
+                                ),
+                                Text(
+                                  'mechanic',
+                                  style: buttontextStyle(),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 100,
+                          child: TextButton(
+                            onPressed: () => null,
+                            child: Column(
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.tools,
+                                  color: Colors.purpleAccent.shade700,
+                                ),
+                                Text(
+                                  'workshop',
+                                  style: buttontextStyle(),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
           //other help
@@ -96,6 +183,58 @@ class _UserHomeState extends State<UserHome> {
                 border: Border.all(
                   color: Colors.grey.shade400,
                   width: 0.5,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Other help',
+                      style: buttonsTileHeadingTextSyle(),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          child: TextButton(
+                            onPressed: () => null,
+                            child: Column(
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.ambulance,
+                                  color: Colors.redAccent.shade700,
+                                ),
+                                Text(
+                                  'emergency',
+                                  style: buttontextStyle(),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 100,
+                          child: TextButton(
+                            onPressed: () => null,
+                            child: Column(
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.exclamationTriangle,
+                                  color: Colors.yellowAccent.shade700,
+                                ),
+                                Text(
+                                  'complaint',
+                                  style: buttontextStyle(),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
