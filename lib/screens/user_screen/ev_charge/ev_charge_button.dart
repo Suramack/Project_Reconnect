@@ -34,22 +34,7 @@ void evChargeButton(BuildContext context, Size size) {
               actions: [
                 IconButton(
                   tooltip: 'sort',
-                  onPressed: () => showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('Sort the range'),
-                      actions: [
-                        ElevatedButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Cance'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Ok'),
-                        ),
-                      ],
-                    ),
-                  ),
+                  onPressed: () => sortDialogBox(context),
                   icon: Icon(
                     FontAwesomeIcons.filter,
                     color: Colors.grey.shade500,
@@ -68,8 +53,7 @@ void evChargeButton(BuildContext context, Size size) {
                 )
               ],
             ),
-            SizedBox(
-              height: size.height * 0.8,
+            Expanded(
               child: ListView.builder(
                 controller: controller,
                 itemCount: 7,
@@ -106,6 +90,7 @@ void evChargeButton(BuildContext context, Size size) {
                             ],
                           ),
                         ),
+
                         //distance and estimate time
 
                         Padding(
@@ -213,6 +198,25 @@ void evChargeButton(BuildContext context, Size size) {
           ],
         ),
       ),
+    ),
+  );
+}
+
+Future<dynamic> sortDialogBox(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('Sort the range'),
+      actions: [
+        ElevatedButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Cance'),
+        ),
+        ElevatedButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Ok'),
+        ),
+      ],
     ),
   );
 }

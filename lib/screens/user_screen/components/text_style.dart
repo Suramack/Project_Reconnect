@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 TextStyle appBarTitleStyle() => const TextStyle(
@@ -40,4 +41,35 @@ TextStyle workersButtonTextStyle() => const TextStyle(
       color: Colors.white,
       fontFamily: 'Heebo',
       fontSize: 18,
+    );
+TextStyle nearMeDistance() => TextStyle(
+      color: Colors.green.shade800,
+      fontFamily: 'Heebo',
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    );
+TextStyle nearMeEstTime() => TextStyle(
+      color: Colors.grey.shade400,
+      fontFamily: 'Heebo',
+      fontSize: 18,
+    );
+TextStyle nearMeAddress() => TextStyle(
+      color: Colors.grey.shade400,
+      fontFamily: 'Heebo',
+      fontSize: 15,
+    );
+TextStyle availableTextStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontSize: 16,
+      fontFamily: 'Heebo',
+    );
+TextStyle availableStatus() => TextStyle(
+      color: Colors.grey.shade500,
+      fontSize: 17,
+      fontFamily: 'Heebo',
+    );
+TextStyle trackTextStyle() => TextStyle(
+      color: Colors.blue.shade600,
+      fontSize: 17,
+      fontFamily: 'Heebo',
     );

@@ -14,8 +14,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   int bottomNaivationIndex = 0;
   List<Widget> home = [
     UserHome(),
-    Text(''),
-    Text(''),
+    Text('sheild'),
+    Text('profile'),
   ];
 
   void setBottomNavigationIndex(int value) {
