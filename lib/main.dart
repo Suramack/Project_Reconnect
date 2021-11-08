@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:reconnect/provider/sample.dart';
+import 'package:reconnect/provider/service.dart';
 import 'package:reconnect/screens/login_screen/login_screen.dart';
 import 'package:reconnect/screens/user_screen/home_screen.dart';
 import 'package:reconnect/screens/worker_screen/home/worker_home_screen.dart';
@@ -16,14 +19,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: title,
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFEFEFEF),
-        appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xff025dbf), centerTitle: true),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => TestService())],
+      child: MaterialApp(
+        title: title,
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xFFEFEFEF),
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Color(0xff025dbf), centerTitle: true),
+        ),
+        home: const UserHomeScreen(),
       ),
-      home: const UserHomeScreen(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 TextStyle appBarTitleStyle() => const TextStyle(
@@ -18,10 +17,10 @@ TextStyle buttontextStyle() => TextStyle(
       fontSize: 15,
     );
 TextStyle workersNameTextStyle() => TextStyle(
-      color: Colors.grey.shade500,
-      fontFamily: 'Barlow',
-      fontSize: 20,
-    );
+    color: Colors.grey.shade500,
+    fontFamily: 'Barlow',
+    fontSize: 20,
+    overflow: TextOverflow.ellipsis);
 TextStyle workersTypeTextStyle() => TextStyle(
       color: Colors.grey.shade400,
       fontFamily: 'Barlow',
@@ -35,11 +34,6 @@ TextStyle workersKmTextStyle() => const TextStyle(
 TextStyle workersTimeTextStyle() => TextStyle(
       color: Colors.grey.shade400,
       fontFamily: 'Barlow',
-      fontSize: 18,
-    );
-TextStyle workersButtonTextStyle() => const TextStyle(
-      color: Colors.white,
-      fontFamily: 'Heebo',
       fontSize: 18,
     );
 TextStyle nearMeDistance() => TextStyle(
@@ -72,4 +66,51 @@ TextStyle trackTextStyle() => TextStyle(
       color: Colors.blue.shade600,
       fontSize: 17,
       fontFamily: 'Heebo',
+    );
+TextStyle nameStyleOfWorker() => TextStyle(
+      color: Colors.grey.shade400,
+      fontSize: 18,
+      fontFamily: 'Barlow',
+      overflow: TextOverflow.ellipsis,
+    );
+TextStyle typeStyleOfWorker() => TextStyle(
+      color: Colors.grey.shade400,
+      fontSize: 18,
+      fontFamily: 'Barlow',
+    );
+TextStyle distanceStyle() => TextStyle(
+      color: Colors.green.shade600,
+      fontSize: 18,
+      fontFamily: 'Heebo',
+      overflow: TextOverflow.ellipsis,
+    );
+TextStyle estTimeStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontSize: 17,
+      fontFamily: 'Barlow',
+      overflow: TextOverflow.ellipsis,
+    );
+TextStyle buttonTextStyle() => const TextStyle(
+      color: Colors.white,
+      fontSize: 15,
+      fontFamily: 'Heebo',
+    );
+TextStyle ratingStyle() => const TextStyle(
+      color: Colors.white,
+      fontFamily: 'Barlow',
+    );
+TextStyle orStyle() => TextStyle(
+      color: Colors.grey.shade400,
+      fontSize: 24,
+      fontFamily: 'Heebo',
+    );
+TextStyle callTextStyle() => const TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+      fontFamily: 'DMMono',
+    );
+TextStyle locateMeTextStyle() => const TextStyle(
+      color: Colors.green,
+      fontSize: 17,
+      fontFamily: 'DMMono',
     );

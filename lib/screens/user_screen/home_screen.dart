@@ -13,7 +13,7 @@ class UserHomeScreen extends StatefulWidget {
 class _UserHomeScreenState extends State<UserHomeScreen> {
   int bottomNaivationIndex = 0;
   List<Widget> home = [
-    UserHome(),
+    const UserHome(),
     Text('sheild'),
     Text('profile'),
   ];

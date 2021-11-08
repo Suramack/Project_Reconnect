@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/user_screen/components/text_style.dart';
-import 'package:reconnect/screens/user_screen/ev_charge/ev_charge_button.dart';
+// import 'package:reconnect/screens/user_screen/ev_charge/ev_charge_button.dart';
+import 'package:reconnect/screens/user_screen/ev_help/ev_charge/ev_charge_button.dart';
 
 void nearMe(BuildContext context, Size size) {
   showModalBottomSheet(
@@ -84,12 +85,13 @@ void nearMe(BuildContext context, Size size) {
                         BoxShadow(color: Colors.grey.shade200, blurRadius: 3)
                       ],
                     ),
-                    child: Row(
-                      children: [
-                        //Distance time and address
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          //Distance time and address
+                          SizedBox(
                             width: size.width * 0.3,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -119,12 +121,9 @@ void nearMe(BuildContext context, Size size) {
                               ],
                             ),
                           ),
-                        ),
-                        const VerticalDivider(),
-                        //available port
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
+                          const VerticalDivider(),
+                          //available port
+                          SizedBox(
                             width: size.width * 0.2,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -146,34 +145,26 @@ void nearMe(BuildContext context, Size size) {
                               ],
                             ),
                           ),
-                        ),
-                        const VerticalDivider(),
-                        //track
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: size.width * 0.25,
-                            height: 70,
-                            alignment: Alignment.center,
-                            child: TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    FontAwesomeIcons.locationArrow,
-                                    size: 22,
-                                  ),
-                                  Text(
-                                    'track',
-                                    style: trackTextStyle(),
-                                  ),
-                                ],
-                              ),
+                          const VerticalDivider(),
+                          //track
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  FontAwesomeIcons.locationArrow,
+                                  size: 22,
+                                ),
+                                Text(
+                                  'track',
+                                  style: trackTextStyle(),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

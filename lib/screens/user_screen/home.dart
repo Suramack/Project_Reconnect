@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/user_screen/components/text_style.dart';
-import 'package:reconnect/screens/user_screen/ev_charge/ev_charge_button.dart';
-import 'package:reconnect/screens/user_screen/near_me/near_me.dart';
+import 'package:reconnect/screens/user_screen/ev_help/battery_exchange/battery_exchange.dart';
+import 'package:reconnect/screens/user_screen/ev_help/ev_charge/ev_charge_button.dart';
+import 'package:reconnect/screens/user_screen/ev_help/near_me/near_me.dart';
+import 'package:reconnect/screens/user_screen/other_help/complaint.dart';
+import 'package:reconnect/screens/user_screen/other_help/emergency.dart';
+import 'package:reconnect/screens/user_screen/vehicle_help/mechanic.dart';
+import 'package:reconnect/screens/user_screen/vehicle_help/workshop.dart';
 
 class UserHome extends StatefulWidget {
   const UserHome({Key? key}) : super(key: key);
@@ -83,7 +89,7 @@ class _UserHomeState extends State<UserHome> {
                       SizedBox(
                         width: 100,
                         child: TextButton(
-                          onPressed: () => null,
+                          onPressed: () => batteryExchange(context, size),
                           child: Column(
                             children: [
                               Icon(
@@ -131,17 +137,14 @@ class _UserHomeState extends State<UserHome> {
                         SizedBox(
                           width: 100,
                           child: TextButton(
-                            onPressed: () => null,
+                            onPressed: () => mechanic(context, size),
                             child: Column(
                               children: [
                                 Icon(
                                   FontAwesomeIcons.route,
                                   color: Colors.amberAccent.shade700,
                                 ),
-                                Text(
-                                  'mechanic',
-                                  style: buttontextStyle(),
-                                )
+                                Text('mechanic', style: buttontextStyle())
                               ],
                             ),
                           ),
@@ -149,7 +152,7 @@ class _UserHomeState extends State<UserHome> {
                         SizedBox(
                           width: 100,
                           child: TextButton(
-                            onPressed: () => null,
+                            onPressed: () => workShop(context, size),
                             child: Column(
                               children: [
                                 Icon(
@@ -198,7 +201,7 @@ class _UserHomeState extends State<UserHome> {
                         SizedBox(
                           width: 100,
                           child: TextButton(
-                            onPressed: () => null,
+                            onPressed: () => emergencySheet(context, size),
                             child: Column(
                               children: [
                                 Icon(
@@ -216,7 +219,9 @@ class _UserHomeState extends State<UserHome> {
                         SizedBox(
                           width: 100,
                           child: TextButton(
-                            onPressed: () => null,
+                            onPressed: () {
+                              toast();
+                            },
                             child: Column(
                               children: [
                                 Icon(

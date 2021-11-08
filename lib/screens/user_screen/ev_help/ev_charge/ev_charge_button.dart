@@ -68,56 +68,82 @@ void evChargeButton(BuildContext context, Size size) {
                         BoxShadow(color: Colors.grey.shade200, blurRadius: 3)
                       ],
                     ),
-                    child: Row(
-                      children: [
-                        //name and type of work
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              //Worker Name
-                              Text(
-                                'Maxima Alexander',
-                                style: workersNameTextStyle(),
-                              ),
-                              //Worker Type(eg: Mobile ev charger or Battery Exchange )
-                              Text(
-                                'Mobile EV charger',
-                                style: workersTypeTextStyle(),
-                              ),
-                            ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          //name and type of work
+                          SizedBox(
+                            width: 140,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 25,
+                                  height: 20,
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xff9f38ff),
+                                        Color(0xff7513ed),
+                                      ],
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(7),
+                                      bottomRight: Radius.circular(7),
+                                    ),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    '4.5',
+                                    style: ratingStyle(),
+                                  ),
+                                ),
+                                //Worker Name
+                                Text(
+                                  'MaximaAlexander',
+                                  style: workersNameTextStyle(),
+                                ),
+                                //Worker Type(eg: Mobile ev charger or Battery Exchange )
+                                Text(
+                                  'Mobile EV charger',
+                                  style: workersTypeTextStyle(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                          const VerticalDivider(),
+                          //distance and estimate time
 
-                        //distance and estimate time
-
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Distance in km
-                              Text(
-                                '13km',
-                                style: workersKmTextStyle(),
-                              ),
-                              // Estimate time
-                              Text(
-                                '10min',
-                                style: workersTimeTextStyle(),
-                              )
-                            ],
+                          Container(
+                            width: 80,
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Distance in km
+                                Text(
+                                  '13km',
+                                  style: workersKmTextStyle(),
+                                ),
+                                // Estimate time
+                                Text(
+                                  '10min',
+                                  style: workersTimeTextStyle(),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        const VerticalDivider(),
-                        //buttons
+                          const VerticalDivider(),
 
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
+                          //call and request button
+
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -129,17 +155,28 @@ void evChargeButton(BuildContext context, Size size) {
                                           borderRadius:
                                               BorderRadius.circular(30))),
                                   minimumSize: MaterialStateProperty.all(
-                                    const Size(120, 40),
-                                  ),
+                                      const Size(120, 40)),
+                                  maximumSize: MaterialStateProperty.all(
+                                      const Size(120, 40)),
                                   elevation: MaterialStateProperty.all(0),
                                   backgroundColor: MaterialStateProperty.all(
                                     const Color(0xff156ced),
                                   ),
                                 ),
                                 onPressed: () => null,
-                                child: Text(
-                                  'call',
-                                  style: workersButtonTextStyle(),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    const Icon(
+                                      FontAwesomeIcons.phoneAlt,
+                                      size: 20,
+                                    ),
+                                    Text(
+                                      'call',
+                                      style: buttonTextStyle(),
+                                    ),
+                                  ],
                                 ),
                               ),
                               // request button
@@ -150,8 +187,9 @@ void evChargeButton(BuildContext context, Size size) {
                                           borderRadius:
                                               BorderRadius.circular(30))),
                                   minimumSize: MaterialStateProperty.all(
-                                    const Size(120, 40),
-                                  ),
+                                      const Size(120, 40)),
+                                  maximumSize: MaterialStateProperty.all(
+                                      const Size(120, 40)),
                                   elevation: MaterialStateProperty.all(0),
                                   backgroundColor: MaterialStateProperty.all(
                                     const Color(0xfff02424),
@@ -160,22 +198,21 @@ void evChargeButton(BuildContext context, Size size) {
                                 onPressed: () => showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
-                                          title: Text('Confirm'),
+                                          title: const Text('Confirm'),
                                           actions: [
                                             ElevatedButton(
                                               onPressed: () =>
                                                   Navigator.pop(context),
-                                              child: Text(
+                                              child: const Text(
                                                 'Cancel',
                                               ),
                                             ),
-                                            // This button will push google map to locate worker and current location to track
                                             ElevatedButton(
                                               onPressed: () => setState(() {
                                                 Navigator.pop(context);
                                                 Navigator.pop(context);
                                               }),
-                                              child: Text(
+                                              child: const Text(
                                                 'Ok',
                                               ),
                                             ),
@@ -183,13 +220,13 @@ void evChargeButton(BuildContext context, Size size) {
                                         )),
                                 child: Text(
                                   'request',
-                                  style: workersButtonTextStyle(),
+                                  style: buttonTextStyle(),
                                 ),
                               ),
                             ],
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
