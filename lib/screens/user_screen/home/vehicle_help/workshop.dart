@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/user_screen/components/text_style.dart';
-import 'package:reconnect/screens/user_screen/ev_help/ev_charge/ev_charge_button.dart';
+import 'package:reconnect/screens/user_screen/home/ev_help/ev_charge/ev_charge_button.dart';
 
 Future workShop(BuildContext context, Size size) => showModalBottomSheet(
       backgroundColor: Colors.transparent,

@@ -44,7 +44,9 @@ void evChargeButton(BuildContext context, Size size) {
                   padding: const EdgeInsets.only(right: 10),
                   child: IconButton(
                     tooltip: 'close',
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: Icon(
                       FontAwesomeIcons.times,
                       color: Colors.grey.shade500,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/user_screen/components/text_style.dart';
-import 'package:reconnect/screens/user_screen/home.dart';
+import 'package:reconnect/screens/user_screen/home/home.dart';
+import 'package:reconnect/screens/user_screen/insurance/home/insurance_home.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({Key? key}) : super(key: key);
@@ -14,11 +16,11 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   int bottomNaivationIndex = 0;
   List<Widget> home = [
     const UserHome(),
-    Text('sheild'),
+    const Insurance(),
     Text('profile'),
   ];
 
-  void setBottomNavigationIndex(int value) {
+  void setBottomNavigationScreen(int value) {
     setState(() {
       bottomNaivationIndex = value;
     });
@@ -27,6 +29,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
@@ -52,7 +55,11 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
             label: '',
           ),
         ],
-        onTap: (value) => setBottomNavigationIndex(value),
+        onTap: (value) {
+          print(value);
+          Fluttertoast.showToast(msg: 'msg');
+        },
+        // setBottomNavigationScreen(value),
       ),
     );
   }
