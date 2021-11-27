@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: size.width,
           height: size.height * 0.3,
           child: Stack(

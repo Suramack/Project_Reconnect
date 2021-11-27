@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/user_screen/insurance/components/text_style.dart';
-import 'package:flutter/foundation.dart';
+import 'package:reconnect/screens/user_screen/insurance/home/view_all_vehicles.dart';
 
 class Insurance extends StatefulWidget {
   const Insurance({Key? key}) : super(key: key);
@@ -12,12 +14,14 @@ class Insurance extends StatefulWidget {
 }
 
 class _InsuranceState extends State<Insurance> {
+  final TextEditingController _carNumber = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    // TextEditingController _carNumber = TextEditingController();
     // CarouselController _carouselController = CarouselController();
     Size size = MediaQuery.of(context).size;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         CarouselSlider(
           // carouselController: _carouselController,
@@ -39,8 +43,8 @@ class _InsuranceState extends State<Insurance> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.lightBlue.shade300,
-                  Colors.blue.shade400,
+                  Colors.lightBlue.shade200,
+                  Colors.blue.shade300,
                 ],
                 begin: Alignment.bottomLeft,
                 end: Alignment.topRight,
@@ -72,7 +76,7 @@ class _InsuranceState extends State<Insurance> {
                           style: carStyle(),
                         ),
                         TextField(
-                          // controller: _carNumber,
+                          controller: _carNumber,
                           textCapitalization: TextCapitalization.characters,
                           style: inputTextStyle(),
                           decoration: InputDecoration(
@@ -101,9 +105,7 @@ class _InsuranceState extends State<Insurance> {
                       backgroundColor: MaterialStateProperty.all(
                           Colors.greenAccent.shade700),
                     ),
-                    onPressed: () {
-                      Fluttertoast.showToast(msg: 'adding');
-                    },
+                    onPressed: () {},
                     child: Text(
                       'add',
                       style: buttonTextStyle(),
@@ -120,9 +122,41 @@ class _InsuranceState extends State<Insurance> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Colors.black,
+              color: Colors.grey.shade300,
               width: 1,
             ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TextButton(
+                onPressed: () => null,
+                child: Text(
+                  'two wheeler',
+                  style: textButtonTextStyle(),
+                ),
+              ),
+              TextButton(
+                onPressed: () => null,
+                child: Text(
+                  'four wheeler',
+                  style: textButtonTextStyle(),
+                ),
+              ),
+              IconButton(
+                onPressed: () => viewAllVehicle(context, size),
+                icon: Column(
+                  children: const [
+                    Icon(
+                      FontAwesomeIcons.solidArrowAltCircleRight,
+                      color: Colors.blueAccent,
+                      size: 26,
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         )
       ],
