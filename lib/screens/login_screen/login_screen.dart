@@ -23,13 +23,14 @@ class _LoginState extends State<Login> {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
-            child: Center(
-          child: Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.4),
-            child: const CustomTabBar(),
+          child: Center(
+            child: Padding(
+              padding:
+                  EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.4),
+              child: const CustomTabBar(),
+            ),
           ),
-        )),
+        ),
       ),
     );
   }

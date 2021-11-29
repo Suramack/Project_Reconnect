@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:reconnect/model/user_logout.dart';
+import 'package:reconnect/screens/login_screen/login_screen.dart';
 
 List<Color> iconColorList = [
   Colors.lightBlueAccent.shade400,
@@ -11,8 +14,14 @@ List<Color> iconBackgroundColorList = [
   Colors.greenAccent.shade100,
   Colors.redAccent.shade100,
 ];
-ListTile profileList(int id, IconData leadingIcon, String title,
-        IconData trailingIcon, String subTitle) =>
+ListTile profileList(
+        int id,
+        IconData leadingIcon,
+        String title,
+        IconData trailingIcon,
+        String subTitle,
+        FirebaseAuth auth,
+        BuildContext context) =>
     ListTile(
       leading: Container(
         width: 50,
@@ -25,12 +34,13 @@ ListTile profileList(int id, IconData leadingIcon, String title,
           color: iconColorList[id],
         ),
       ),
-      onTap: () {
-        Fluttertoast.showToast(
-          msg: 'developing stage of id $id',
-          toastLength: Toast.LENGTH_SHORT,
-          backgroundColor: Colors.grey.shade700,
-        );
+      onTap: () async {
+        if (id == 2) {
+          await userLogOut(auth)
+              ? Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const Login()))
+              : print('error in logout');
+        }
       },
       title: Text(
         title,

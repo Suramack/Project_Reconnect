@@ -3,6 +3,7 @@ import 'package:reconnect/screens/registration_screen/user_registration_design/c
 
 bottomSheet(context) {
   return showModalBottomSheet(
+      isDismissible: true,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(13)),

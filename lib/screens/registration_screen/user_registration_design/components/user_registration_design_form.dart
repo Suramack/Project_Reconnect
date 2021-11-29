@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:reconnect/model/user_register.dart';
+import 'package:reconnect/screens/user_screen/home_screen.dart';
 
 class UserRegistration extends StatefulWidget {
   const UserRegistration({Key? key}) : super(key: key);
@@ -10,6 +14,12 @@ class UserRegistration extends StatefulWidget {
 }
 
 class _UserRegistrationState extends State<UserRegistration> {
+  final auth = FirebaseAuth.instance;
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confrimPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,6 +38,7 @@ class _UserRegistrationState extends State<UserRegistration> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(
+            controller: nameController,
             cursorColor: Colors.black,
             decoration: InputDecoration(
               labelStyle: TextStyle(
@@ -49,6 +60,8 @@ class _UserRegistrationState extends State<UserRegistration> {
             ),
           ),
           TextField(
+            controller: emailController,
+            keyboardType: TextInputType.emailAddress,
             cursorColor: Colors.black,
             decoration: InputDecoration(
               labelStyle: TextStyle(
@@ -71,6 +84,7 @@ class _UserRegistrationState extends State<UserRegistration> {
             ),
           ),
           TextField(
+            controller: passwordController,
             obscureText: true,
             cursorColor: Colors.black,
             decoration: InputDecoration(
@@ -93,6 +107,7 @@ class _UserRegistrationState extends State<UserRegistration> {
             ),
           ),
           TextField(
+            controller: confrimPasswordController,
             obscureText: true,
             cursorColor: Colors.black,
             decoration: InputDecoration(
@@ -118,7 +133,17 @@ class _UserRegistrationState extends State<UserRegistration> {
             style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.green)),
-            onPressed: () {},
+            onPressed: () async {
+              await userRegister(
+                      emailController.text, passwordController.text, auth)
+                  ? print('not valid')
+                  : Navigator.pushAndRemoveUntil(
+                      context,
+                      (MaterialPageRoute(
+                        builder: (context) => const UserHomeScreen(),
+                      )),
+                      (_) => false);
+            },
             child: const Text(
               'SIGN UP',
               style: TextStyle(

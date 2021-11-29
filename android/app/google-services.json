@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "340924033895",
+    "project_id": "reconnect-eda12",
+    "storage_bucket": "reconnect-eda12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340924033895:android:350deff91395a2236d5dc2",
+        "android_client_info": {
+          "package_name": "com.example.reconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340924033895-dggadekvqip273fuek67t9k5dfpmcok2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX_SaUD7H4BBN-UakEjaW7DwiIkJsKIjo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340924033895-dggadekvqip273fuek67t9k5dfpmcok2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

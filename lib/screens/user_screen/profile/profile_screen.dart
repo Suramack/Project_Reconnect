@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reconnect/screens/user_screen/insurance/components/text_style.dart';
@@ -11,6 +13,7 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -69,28 +72,25 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   profileList(
-                    0,
-                    FontAwesomeIcons.userAlt,
-                    'Profile',
-                    FontAwesomeIcons.chevronRight,
-                    'edit profile',
-                  ),
+                      0,
+                      FontAwesomeIcons.userAlt,
+                      'Profile',
+                      FontAwesomeIcons.chevronRight,
+                      'edit profile',
+                      auth,
+                      context),
+                  const Divider(),
+                  profileList(1, FontAwesomeIcons.bell, 'Notification',
+                      FontAwesomeIcons.chevronRight, 'off/on', auth, context),
                   const Divider(),
                   profileList(
-                    1,
-                    FontAwesomeIcons.bell,
-                    'Notification',
-                    FontAwesomeIcons.chevronRight,
-                    'off/on',
-                  ),
-                  const Divider(),
-                  profileList(
-                    2,
-                    FontAwesomeIcons.signOutAlt,
-                    'Logout',
-                    FontAwesomeIcons.chevronRight,
-                    'see you soon',
-                  ),
+                      2,
+                      FontAwesomeIcons.signOutAlt,
+                      'Logout',
+                      FontAwesomeIcons.chevronRight,
+                      'see you soon',
+                      auth,
+                      context),
                   const Divider()
                 ],
               ),
