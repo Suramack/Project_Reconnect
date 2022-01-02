@@ -11,7 +11,7 @@ import 'package:reconnect/screens/worker_screen/home/worker_home_screen.dart';
 import 'package:reconnect/screens/worker_screen/worker_status_screen.dart';
 import 'package:reconnect/test_widget.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
